@@ -8,6 +8,14 @@
 
 const path = require('path');
 
+const shebangLoader = function(source) {
+  this.cacheable && this.cacheable();
+  if (typeof source === "string" && /^#!/.test(source)) {
+    source = source.replace(/^#![^\n\r]*[\r\n]/, "");
+  }
+  return source;
+};
+
 module.exports = {
     entry: './src/server.ts',
     mode: 'development',
@@ -30,10 +38,11 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                loader: 'ts-loader',
-                options: {
-                    configFile: 'tsconfig.json'
-                }
+                use: [
+                    { loader: 'ts-loader', options: { configFile: 'tsconfig.json' }},
+                    { loader: require.resolve('./shebang-loader.js') }
+                ]
+
             }
         ]
     },

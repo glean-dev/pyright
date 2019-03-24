@@ -6,8 +6,7 @@
 var fsExtra = require('fs-extra');
 
 // Clean the dist directory
-fsExtra.emptyDirSync('../dist');
 
-fsExtra.mkdirSync('../dist/typeshed-fallback');
-fsExtra.copySync('../client/typeshed-fallback', '../dist/typeshed-fallback');
+fsExtra.removeSync('../client/server/typeshed-fallback');
 
+fsExtra.copySync('../client/typeshed-fallback', '../client/server/typeshed-fallback');

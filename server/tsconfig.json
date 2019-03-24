@@ -8,7 +8,7 @@
 		"target": "es6",
 		"module": "commonjs",
 		"moduleResolution": "node",
-		"sourceMap": true,
+		"sourceMap": false,
 		"lib" : [ "es2016" ],
 		"outDir": "../client/server"
 	},
