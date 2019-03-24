@@ -33,7 +33,7 @@ interface Settings {
 (global as any).__rootDirectory = getDirectoryPath(__dirname);
 
 // Create a connection for the server. The connection uses Node's IPC as a transport
-let _connection: IConnection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
+let _connection: IConnection = createConnection();
 
 _connection.console.log('Pyright language server starting');
 
